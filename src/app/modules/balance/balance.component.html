@@ -1,3 +1,9 @@
-<p>
-  balance works!
-</p>
+<div class="card">
+  <div class="card-header">
+    Balance
+  </div>
+  <div class="card-body">
+    <p class="card-text"><b>{{credis}}</b> credis</p>
+    <button class="btn btn-primary" (click)="getCredits()" [disabled]="!credis">Button</button>
+  </div>
+</div>

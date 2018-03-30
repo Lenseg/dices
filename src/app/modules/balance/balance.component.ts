@@ -7,9 +7,12 @@ import { Component, OnInit } from '@angular/core';
 })
 export class BalanceComponent implements OnInit {
 
+  credits: number;
+
   constructor() { }
 
   ngOnInit() {
+    this.credits = 0;
   }
 
 }
