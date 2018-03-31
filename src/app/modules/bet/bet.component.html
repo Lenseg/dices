@@ -3,32 +3,56 @@
     Place bet
   </div>
   <div class="card-body">
-    <form>
+    <form [formGroup]="betForm" novalidate>
       <div class="form-group row">
         <label for="amont" class="col-sm-2 col-form-label">Bet Amount</label>
         <div class="col-sm-10">
-          <input type="password" class="form-control" id="amont" placeholder="Bet Amount">
+          <input type="number" class="form-control" formControlName="amount" id="amont" placeholder="Bet Amount" [ngClass]="{
+              'is-valid': betForm.controls.amount.valid && betForm.controls.amount.touched,
+              'is-invalid': !betForm.controls.amount.valid && betForm.controls.amount.touched
+            }">
         </div>
       </div>
       <div class="form-group row">
         <label for="number" class="col-sm-2 col-form-label">Number</label>
         <div class="col-sm-10">
-          <input type="password" class="form-control" id="number" placeholder="Number">
+          <input type="number" class="form-control" formControlName="number" id="number" placeholder="Number" [ngClass]="{
+              'is-valid': betForm.controls.number.valid && betForm.controls.number.touched,
+              'is-invalid': !betForm.controls.number.valid && betForm.controls.number.touched
+            }">
         </div>
       </div>
     </form>
     <div class="row">
       <div class="col-sm-6">
-        <button class="btn btn-primary  mb-1">Bet Hi</button>
-        <p class="mb-1"><i>Number: >= 1</i></p>
-        <p class="mb-1">Chance: <b>1</b></p>
-        <p class="mb-1">Payout: <b>1</b></p>
+        <button class="btn btn-primary  mb-1" [disabled]="!betForm.valid">Bet Hi</button>
+        <p class="mb-1">
+          <i>Number: >=
+            <span [hidden]="!betForm.controls.number.valid">{{betForm.controls.number.value}}</span></i>
+        </p>
+        <p class="mb-1">
+          Chance:
+          <b [hidden]="!betForm.controls.number.valid">{{(100 - betForm.controls.number.value) || 1}}</b>
+        </p>
+        <p class="mb-1">
+          Payout:
+          <b [hidden]="!betForm.controls.number.valid">{{getPayout(100 - betForm.controls.number.value)}}x</b>
+        </p>
       </div>
       <div class="col-sm-6">
-        <button class="btn btn-primary mb-1">Bet Lo</button>
-        <p class="mb-1"><i>Number: <= 1</i></p>
-        <p class="mb-1">Chance: <b>1</b></p>
-        <p class="mb-1">Payout: <b>1</b></p>
+        <button class="btn btn-primary mb-1" [disabled]="!betForm.valid">Bet Lo</button>
+        <p class="mb-1">
+          <i>Number: <=
+            <span [hidden]="!betForm.controls.number.valid">{{betForm.controls.number.value}}</span></i>
+        </p>
+        <p class="mb-1">
+          Chance:
+          <b [hidden]="!betForm.controls.number.valid">{{betForm.controls.number.value}}</b>
+        </p>
+        <p class="mb-1">
+          Payout:
+          <b [hidden]="!betForm.controls.number.valid">{{getPayout(betForm.controls.number.value)}}x</b>
+        </p>
       </div>
     </div>
   </div>

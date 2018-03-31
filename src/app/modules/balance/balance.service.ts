@@ -13,13 +13,13 @@ export class BalanceService {
   }
 
   getFreeCredits() {
-    if (this.balance.getValue() === 0) {
+    if (this.balance.value === 0) {
       this.balance.next(100);
     }
   }
 
   placeBet(amount) {
-    const currentBalance = this.balance.getValue();
+    const currentBalance = this.balance.value;
     if (currentBalance >= amount) {
       this.balance.next(currentBalance - amount);
     }
