@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
+import { BehaviorSubject } from 'rxjs/BehaviorSubject';
+
 @Component({
   selector: 'app-balance',
   templateUrl: './balance.component.html',
@@ -7,12 +9,11 @@ import { Component, OnInit } from '@angular/core';
 })
 export class BalanceComponent implements OnInit {
 
-  credits: number;
+  balance: BehaviorSubject<number>;
 
   constructor() { }
 
   ngOnInit() {
-    this.credits = 0;
   }
 
 }

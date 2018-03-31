@@ -6,6 +6,7 @@ import { BalanceComponent } from './balance.component';
   imports: [
     CommonModule
   ],
-  declarations: [BalanceComponent]
+  declarations: [BalanceComponent],
+  exports: [BalanceComponent]
 })
 export class BalanceModule { }
