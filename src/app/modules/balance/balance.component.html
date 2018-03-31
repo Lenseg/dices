@@ -4,6 +4,6 @@
   </div>
   <div class="card-body">
     <p class="card-text"><b>{{balance | async}}</b> credis</p>
-    <button class="btn btn-primary" (click)="getCredits()" [disabled]="!(balance | async)">Free credits</button>
+    <button class="btn btn-primary" (click)="getFreeCredits()" [disabled]="(balance | async)">Free credits</button>
   </div>
 </div>

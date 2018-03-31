@@ -3,6 +3,8 @@ import { NgModule } from '@angular/core';
 
 import { AppComponent } from './app.component';
 
+import { BalanceService } from './modules/balance/balance.service';
+
 import { BalanceModule } from './modules/balance/balance.module';
 
 
@@ -14,7 +16,7 @@ import { BalanceModule } from './modules/balance/balance.module';
     BalanceModule,
     BrowserModule
   ],
-  providers: [],
+  providers: [BalanceService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
