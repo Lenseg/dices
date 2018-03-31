@@ -12,16 +12,21 @@ export class BalanceService {
     this.balance = new BehaviorSubject (initialBalance);
   }
 
-  getFreeCredits() {
-    if (this.balance.value === 0) {
-      this.balance.next(100);
+  incrementBalance(amount) {
+    const currentBalance = this.balance.value;
+    if (currentBalance + amount >= 0) {
+      this.balance.next(currentBalance + amount);
+      this.storeBalance();
     }
   }
 
-  placeBet(amount) {
-    const currentBalance = this.balance.value;
-    if (currentBalance >= amount) {
-      this.balance.next(currentBalance - amount);
+  getFreeCredits() {
+    if (this.balance.value === 0) {
+      this.incrementBalance(100);
     }
+  }
+
+  storeBalance() {
+    localStorage.setItem('balance', this.balance.value.toString());
   }
 }

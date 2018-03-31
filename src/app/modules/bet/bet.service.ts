@@ -12,7 +12,9 @@ export class BetService {
   numberEngine;
 
   constructor() {
-    this.nextTick();
+    this.initEngines();
+    this.hash = new BehaviorSubject(this.getNextHash());
+    this.winningNumber = new BehaviorSubject(this.generateNextNumber());
   }
 
   getNextHash() {
@@ -25,8 +27,8 @@ export class BetService {
   }
 
   nextTick() {
-    this.hash = new BehaviorSubject(this.getNextHash());
-    this.winningNumber = new BehaviorSubject(this.generateNextNumber());
+    this.hash.next(this.getNextHash());
+    this.winningNumber.next(this.generateNextNumber());
   }
 
   initEngines() {
@@ -35,6 +37,6 @@ export class BetService {
   }
 
   generateNextNumber() {
-    return randomJs.integer(1, 100);
+    return this.numberEngine.integer(1, 100);
   }
 }

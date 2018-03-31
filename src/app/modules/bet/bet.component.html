@@ -25,7 +25,7 @@
     </form>
     <div class="row">
       <div class="col-sm-6">
-        <button class="btn btn-primary  mb-1" [disabled]="!betForm.valid">Bet Hi</button>
+        <button class="btn btn-primary  mb-1" [disabled]="!betForm.valid" (click)="play('hi')">Bet Hi</button>
         <p class="mb-1">
           <i>Number: >=
             <span [hidden]="!betForm.controls.number.valid">{{betForm.controls.number.value}}</span></i>
@@ -40,7 +40,7 @@
         </p>
       </div>
       <div class="col-sm-6">
-        <button class="btn btn-primary mb-1" [disabled]="!betForm.valid">Bet Lo</button>
+        <button class="btn btn-primary mb-1" [disabled]="!betForm.valid" (click)="play('lo')">Bet Lo</button>
         <p class="mb-1">
           <i>Number: <=
             <span [hidden]="!betForm.controls.number.valid">{{betForm.controls.number.value}}</span></i>
