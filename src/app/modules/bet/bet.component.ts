@@ -35,7 +35,7 @@ export class BetComponent implements OnInit {
       case 'lo' :
         won = this.processLoBet(betNumbet);
     }
-    balanceIncrement = (bet * won) - bet;
+    balanceIncrement = parseFloat(((bet * won) - bet).toFixed(2));
     this.balanceService.incrementBalance(balanceIncrement);
     this.betService.nextTick();
   }
