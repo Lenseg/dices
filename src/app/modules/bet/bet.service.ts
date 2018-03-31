@@ -19,6 +19,8 @@ export class BetService {
 
   getNextHash() {
     try {
+      // if run out of hashes, create new engines
+
       return this.hashEngine.next();
     } catch (e) {
       this.initEngines();

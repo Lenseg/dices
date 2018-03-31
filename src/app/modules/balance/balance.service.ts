@@ -15,6 +15,7 @@ export class BalanceService {
   incrementBalance(amount) {
     const currentBalance = this.balance.value;
     if (currentBalance + amount >= 0) {
+      // for decimal shortened
       this.balance.next(Math.floor((currentBalance + amount) * 100) / 100);
       this.storeBalance();
     }

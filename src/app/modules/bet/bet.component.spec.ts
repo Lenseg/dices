@@ -29,4 +29,12 @@ describe('BetComponent', () => {
   it('should create', () => {
     expect(component).toBeTruthy();
   });
+
+  it('should calculate payout properly', () => {
+    expect(component.getPayout(50)).toBe(2);
+    expect(component.getPayout(1)).toBe(100);
+    expect(component.getPayout(99)).toBe(1.01);
+    expect(component.getPayout(90)).toBe(1.11);
+    expect(component.getPayout(10)).toBe(10);
+  });
 });

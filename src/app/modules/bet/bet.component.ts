@@ -27,15 +27,21 @@ export class BetComponent implements OnInit {
     const betNumbet = this.betForm.controls.number.value,
     bet = this.betForm.controls.amount.value;
     let balanceIncrement,
-    won;
+    payout;
+
+    // get payout, if loose payout is 0
+
     switch (betType) {
       case 'hi' :
-        won = this.processHiBet(betNumbet);
+        payout = this.processHiBet(betNumbet);
         break;
       case 'lo' :
-        won = this.processLoBet(betNumbet);
+        payout = this.processLoBet(betNumbet);
     }
-    balanceIncrement = parseFloat(((bet * won) - bet).toFixed(2));
+
+    // toFixed for shortened decimal part
+
+    balanceIncrement = parseFloat(((bet * payout) - bet).toFixed(2));
     this.balanceService.incrementBalance(balanceIncrement);
     this.betService.nextTick();
   }
@@ -51,6 +57,8 @@ export class BetComponent implements OnInit {
   }
 
   getPayout(chance) {
+    // toFixed for shortened decimal part
+
     return parseFloat((100 / (chance || 1)).toFixed(2));
   }
 
