@@ -35,21 +35,19 @@ export class BetComponent implements OnInit {
       case 'lo' :
         won = this.processLoBet(betNumbet);
     }
-    if (won) {
-      balanceIncrement = (bet * this.getPayout(betNumbet)) - bet;
-    } else {
-      balanceIncrement = bet * -1;
-    }
+    balanceIncrement = (bet * won) - bet;
     this.balanceService.incrementBalance(balanceIncrement);
     this.betService.nextTick();
   }
 
   processHiBet(betNumbet) {
-    return betNumbet <= this.betService.winningNumber.value;
+    return betNumbet <= this.betService.winningNumber.value ?
+     this.getPayout(100 - betNumbet) : 0;
   }
 
   processLoBet(betNumbet) {
-    return betNumbet >= this.betService.winningNumber.value;
+    return betNumbet >= this.betService.winningNumber.value ?
+     this.getPayout(betNumbet) : 0;
   }
 
   getPayout(chance) {
