@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { BehaviorSubject } from 'rxjs/BehaviorSubject';
-import { randomJs } from 'random-js';
-import { provable } from 'provable';
+import * as randomJs from 'random-js';
+import * as provable from 'provable/dist/provable.min.js';
 
 @Injectable()
 export class BetService {
@@ -17,7 +17,7 @@ export class BetService {
 
   getNextHash() {
     try {
-      return this.hashEngine();
+      return this.hashEngine.next();
     } catch (e) {
       this.initEngines();
       return this.getNextHash();
