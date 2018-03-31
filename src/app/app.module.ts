@@ -6,6 +6,7 @@ import { AppComponent } from './app.component';
 import { BalanceService } from './modules/balance/balance.service';
 
 import { BalanceModule } from './modules/balance/balance.module';
+import { BetModule } from './modules/bet/bet.module';
 
 
 @NgModule({
@@ -14,6 +15,7 @@ import { BalanceModule } from './modules/balance/balance.module';
   ],
   imports: [
     BalanceModule,
+    BetModule,
     BrowserModule
   ],
   providers: [BalanceService],
