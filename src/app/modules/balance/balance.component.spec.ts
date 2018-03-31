@@ -13,6 +13,7 @@ describe('BalanceComponent', () => {
       providers: [BalanceService]
     })
     .compileComponents();
+    localStorage.removeItem('balance');
   }));
 
   beforeEach(() => {
@@ -23,5 +24,10 @@ describe('BalanceComponent', () => {
 
   it('should create', () => {
     expect(component).toBeTruthy();
+  });
+
+  it('should get free credis', () => {
+    component.getFreeCredits();
+    expect(component.balance.value).toBeTruthy(100);
   });
 });
