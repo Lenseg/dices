@@ -1,4 +1,7 @@
 import { Component } from '@angular/core';
+import { BehaviorSubject } from 'rxjs/BehaviorSubject';
+
+import { BetService } from './modules/bet/bet.service';
 
 @Component({
   selector: 'app-root',
@@ -7,4 +10,8 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'app';
+  hash: BehaviorSubject<string>;
+  constructor(private betService: BetService) {
+    this.hash = this.betService.hash;
+  }
 }
