@@ -12,4 +12,8 @@ describe('BalanceService', () => {
   it('should be created', inject([BalanceService], (service: BalanceService) => {
     expect(service).toBeTruthy();
   }));
+
+  it('should set zero balance by default', inject([BalanceService], (service: BalanceService) => {
+    expect(service.balance.value).toBe(0);
+  }));
 });

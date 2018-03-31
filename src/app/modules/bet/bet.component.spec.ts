@@ -1,6 +1,11 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { FormsModule, ReactiveFormsModule, FormBuilder } from '@angular/forms';
 
 import { BetComponent } from './bet.component';
+
+import { BalanceService } from '../balance/balance.service';
+import { BetService } from '../bet/bet.service';
+
 
 describe('BetComponent', () => {
   let component: BetComponent;
@@ -8,7 +13,9 @@ describe('BetComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ BetComponent ]
+      declarations: [ BetComponent ],
+      providers: [FormBuilder, BalanceService, BetService],
+      imports: [FormsModule, ReactiveFormsModule]
     })
     .compileComponents();
   }));

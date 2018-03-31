@@ -9,7 +9,6 @@ import { BetService } from './modules/bet/bet.service';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  title = 'Endpass test-task';
   winningNumber: number;
   cacheNumber: number;
   winningNumberSubject: BehaviorSubject<number>;
