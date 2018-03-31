@@ -1,6 +1,14 @@
 <app-balance></app-balance>
 <app-bet></app-bet>
 <div class="card">
+  <div class="card-header" [hidden]="!winningNumber">
+    Winning number
+  </div>
+  <div class="card-body">
+    <p class="card-text">{{winningNumber}}</p>
+  </div>
+</div>
+<div class="card">
   <div class="card-header">
     Provably Fair Hash
   </div>
